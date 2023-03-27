@@ -304,6 +304,26 @@ function ProductList({ productService }) {
 
 Тодорхой, дүрсэлсэн нэрсийг ашигла. Нийтлэг ойлгогддоггүй товчлол, товчилсон үг ашиглахаас зайлсхий. Конвенцуудыг нэрлэхдээ CamelCase тэмдэглэгээг ашиглана уу.
 
+```jsx
+// Bad example:
+function hldr(props) {
+  return (
+    <div className="hldr">
+      <p className="txt">{props.text}</p>
+    </div>
+  );
+}
+
+// Good example:
+function Holder(props) {
+  return (
+    <div className="holder">
+      <p className="text">{props.text}</p>
+    </div>
+  );
+}
+```
+
 ### 2. File Organization
 
 Файлуудыг логик бүлгүүд болон directories болгон зохион байгуул.
