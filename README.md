@@ -306,7 +306,43 @@ function ProductList({ productService }) {
 
 ### 2. File Organization
 
-Файлуудыг логик бүлгүүд болон лавлахууд болгон зохион байгуул. Файлын зорилгыг тусгасан тууштай файлын нэршлийн конвенцийг ашигла.
+Файлуудыг логик бүлгүүд болон directories болгон зохион байгуул.
+
+``markdown
+
+- pages/
+  - index.js
+  - about.js
+  - blog/
+    - index.js
+    - [slug].js
+  - products/
+    - index.js
+    - [productId].js
+- components/
+  - Layout/
+    - index.js
+    - Header.js
+    - Footer.js
+  - Blog/
+    - index.js
+    - Post.js
+  - Product/
+    - index.js
+    - List.js
+    - Details.js
+- styles/
+  - global.css
+  - Layout.module.css
+  - Blog.module.css
+  - Product.module.css
+- utils/
+  - api.js
+- public/
+  - images/
+  - favicon.ico
+- package.json
+  - ...
 
 ### 3. Documentation
 
