@@ -329,15 +329,6 @@ function Holder(props) {
 Файлуудыг логик бүлгүүд болон directories болгон зохион байгуул.
 
 ```markdown
-- pages/
-  - index.js
-  - about.js
-  - blog/
-    - index.js
-    - [slug].js
-  - products/
-    - index.js
-    - [productId].js
 - components/
   - Layout/
     - index.js
@@ -350,31 +341,63 @@ function Holder(props) {
     - index.js
     - List.js
     - Details.js
-- styles/
-  - global.css
-  - Layout.module.css
-  - Blog.module.css
-  - Product.module.css
-- utils/
-  - api.js
-- public/
-  - images/
-  - favicon.ico
-- package.json
-  - ...
 ```
 
 ### 3. Documentation
 
-Бүрэлдэхүүн хэсгийн зорилго, хэрхэн ажилладаг, хэрхэн ашиглах талаар тайлбарласан тайлбаруудыг кодоо оруулна уу. Бүрэлдэхүүн хэсэгт хамаарах аливаа таамаглал, хязгаарлалтыг баримтжуулах.
+Component-үүдийн зорилго, хэрхэн ажилладаг, хэрхэн ашиглах талаар тайлбарласан comment бичиж өгнө үү.
+
+```jsx
+// This component renders a list of items
+// Props:
+// - items: An array of items to render
+// - onClick: A function to call when an item is clicked
+function ItemList({ items, onClick }) {
+  // We assume that each item is an object with a "text" property
+  // and a unique "id" property
+  return (
+    <ul>
+      {items.map((item) => (
+        <li key={item.id} onClick={() => onClick(item)}>
+          {item.text}
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
 
 ### 4. Functionality
 
-Бүрэлдэхүүн хэсгүүд нь модульчлагдсан, дахин ашиглах боломжтой байхаар хийгдсэн эсэхийг шалгаарай. Бүрэлдэхүүн хэсгүүдийн код эсвэл функцийг давхардахаас зайлсхий.
+Component-үүд нь модульчлагдсан, дахин ашиглах боломжтой байхаар хийгдсэн эсэхийг шалгаарай. Component-үүдийн код эсвэл функцийг давхардахаас зайлсхий.
 
 ### 5. Data Structures
 
-Бүрэлдэхүүн хэсгүүдийн оролт, гаралтын хувьд тогтвортой өгөгдлийн бүтцийг ашиглах. Өгөгдлийн бүтцийг сайн тодорхойлсон бөгөөд ойлгомжтой болгох.
+Component-үүдийн оролт, гаралтын хувьд тогтвортой өгөгдлийн бүтцийг ашиглах. Өгөгдлийн бүтцийг сайн тодорхойлсон бөгөөд ойлгомжтой болгох.
+
+```jsx
+// Bad example:
+function Product({ product }) {
+  return (
+    <div>
+      <p>{product.title}</p>
+      <p>{product.price}</p>
+      <p>{product.description}</p>
+    </div>
+  );
+}
+
+// Good example:
+function Product({ title, price, description }) {
+  return (
+    <div>
+      <p>{title}</p>
+      <p>{price}</p>
+      <p>{description}</p>
+    </div>
+  );
+}
+```
 
 ### 6. Error Handling
 
