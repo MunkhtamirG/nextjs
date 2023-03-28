@@ -132,7 +132,7 @@ State management-ийн сан ашиглах нь төлөвийг өөр өө�
 
 ### 6. Error Handling
 
-Алдааны тодорхой мэдээллүүдийг өгч, гэнэтийн алдаа, эвдрэлээс урьдчилан сэргийлэх алдаатай харьцах механизмуудыг оруул.
+Error Handling хийх нь алдааны message-ийг цэвэрлэх, зохион байгуулахаас гадна unexpected errors болон crashes-аас сэргийлнэ.
 
 ```jsx
 function LoginForm({ onSubmit }) {
@@ -181,7 +181,43 @@ function LoginForm({ onSubmit }) {
 
 ### 7. Testing
 
-Component-үүд нь хүлээгдэж буйгаар ажиллаж байгаа эсэхийг шалгахын тулд нэгжийн туршилтуудыг оруулаарай. Туршилтын тууштай аргачлалыг дагаж, шалгалтыг сайтар баримтжуулсан эсэхийг шалгаарай.
+Component-үүдыг төлөвлөсөний дагуу ажиллаж байгаа эсэхийг шалгаарай. Test хийх арга барилуудаас ашиглан шалгаж болдог.
+
+```jsx
+// Button.js
+
+import React from "react";
+
+const Button = ({ onClick, text }) => {
+  return <button onClick={onClick}>{text}</button>;
+};
+
+export default Button;
+```
+
+```jsx
+// Button.test.js
+
+import React from "react";
+import { render, fireEvent } from "@testing-library/react";
+import Button from "./Button";
+
+describe("Button component", () => {
+  it("renders correctly", () => {
+    const { getByText } = render(<Button text="Click me!" />);
+    expect(getByText("Click me!")).toBeInTheDocument();
+  });
+
+  it("calls onClick when clicked", () => {
+    const handleClick = jest.fn();
+    const { getByText } = render(
+      <Button onClick={handleClick} text="Click me!" />
+    );
+    fireEvent.click(getByText("Click me!"));
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
 
 ### 8. Security
 
