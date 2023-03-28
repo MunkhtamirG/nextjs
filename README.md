@@ -335,7 +335,7 @@ export default function App() {
 }
 ```
 
-##### Энэ жишээнд MyComponent-ийн гүйцэтгэлийг хэмжихийн тулд React-ийн Profiler component-ийг ашиглаж байна. onRenderCallback функцийг тодорхойлсон бөгөөд энэ нь component-ийг render хийхэд зарцуулсан хугацаа (actualDuration) болон санах ойгүйгээр зарцуулсан хугацааг (baseDuration) тооцоолон logs information-д харуулдаг. onRenderCallback функцын гаралтыг шинжилснээр component-д учирах саад тотгорыг тодорхойлж, оновчтой болгоход туслах юм. Жишээлбэл,
+##### Энэ жишээнд MyComponent-ийн гүйцэтгэлийг хэмжихийн тулд React-ийн Profiler component-ийг ашиглаж байна. onRenderCallback функцийг тодорхойлсон бөгөөд энэ нь component-ийг render хийхэд зарцуулсан хугацаа (actualDuration) болон санах ойгүйгээр зарцуулсан хугацааг (baseDuration) тооцоолон logs information-д харуулдаг. onRenderCallback функцын гаралтыг шинжилснээр component-д учирах саад тотгорыг тодорхойлж, оновчтой болгоход туслах юм. Жишээлбэл, component нь шаардлагатай хэмжээнээс илүү олон удаа re-render хийж байгааг илрүүлж,
 
 ### 10. Code Review
 
