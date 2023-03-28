@@ -47,7 +47,7 @@ function Holder(props) {
 
 ### 3. Code structure
 
-Унших, ойлгоход хялбар кодын бүтцийг ашигла. Уншиж чадварыг ойлгоход хялбар байхын тулд догол болон зайг ашиглана уу.
+Унших, ойлгоход хялбар кодын бүтцийг ашигла. Уншиж ойлгоход хялбар байхын тулд догол болон зайг ашиглана уу.
 
 ```jsx
 import React from "react";
@@ -73,21 +73,53 @@ export default ExampleComponent;
 
 #### Энэ жишээнд:
 
-##### 1.We use consistent indentation of 2 spaces throughout the component.
+##### 1. Бүрэлдэхүүн хэсгүүдийн хооронд зай авсан байна.
 
-##### 1.We use consistent indentation of 2 spaces throughout the component.
+##### 2. Хувьсагч зарлахдаа зорилгыг тусгасан утга учиртай нэр ашигласан (data, handleClick).
 
-##### 1.We use consistent indentation of 2 spaces throughout the component.
+##### 3. Class болон function нэрлэхдээ зорилгыг тусгасан утга учиртай нэр ашигласан (ExampleComponent, handleClick).
 
-##### 1.We use consistent indentation of 2 spaces throughout the component.
+##### 4. (=, {}, ()) оператор болон хаалт хооронд тогтмол зайг ашигласан.
 
-##### 1.We use consistent indentation of 2 spaces throughout the component.
+##### 5. JSX syntax ашиглан унших, ойлгоход хялбар болгон элемент бүрийг догол мөрөнд бичсэн.
 
-##### 1.We use consistent indentation of 2 spaces throughout the component.
+##### 6. Consistent convention-ий дагуу Component-ийг file-ийн доод хэсэгт export хийсэн.
 
-### 4. Functionality
+### 4. Componentization
 
 Component-үүд нь модульчлагдсан, дахин ашиглах боломжтой байхаар хийгдсэн эсэхийг шалгаарай. Component-үүдийн код эсвэл функцийг давхардахаас зайлсхий.
+
+```jsx
+import React from "react";
+import PropTypes from "prop-types";
+
+function Button(props) {
+  const { onClick, children } = props;
+
+  return <button onClick={onClick}>{children}</button>;
+}
+
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+export default Button;
+```
+
+#### Энэ жишээнд:
+
+##### 1. Application-ий хаана ч ашиглаж болох дахин ашиглах боломжтой Button component үүсгэсэн.
+
+##### 2. Өөрчлөх, дахин ашиглах боломжийг олгохын тулд props ашигласан (onClick and children).
+
+##### 3. Төрөл шалгах, алдаа гарахаас урьдчилан сэргийлэхийн тулд PropTypes-ийг тодорхойлсон.
+
+##### 4. Бусад component-нд ашиглахын тулд файлын төгсгөлд component-ийг экспортолсон.
+
+##### 5. Code давхардахаас сэргийлэн Button element-д зориулан тусад нь component үүсгэсэн.
+
+##### 6. Modular code structure-ийн дагуу Button component-д тусад нь file үүсгэсэн ба энэ нь дахин ашиглах болон өөрчлөхөд хялбар болгодог.
 
 ### 5. Data Structures
 
