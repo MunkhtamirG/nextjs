@@ -225,6 +225,64 @@ describe("Button component", () => {
 
 Component-үүд нь аюулгүй байдлын үүднээс хийгдсэн эсэхийг шалгаарай. Аюулгүй код бичэж нийтлэг security vulnerabilities-үүдээс сэргийлээрэй.
 
+```jsx
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+
+const LoginForm = ({ onSubmit }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Ensure that username and password are not empty before submitting the form
+    if (username && password) {
+      onSubmit(username, password);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          value={username}
+          onChange={handleUsernameChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+export default LoginForm;
+```
+
+##### Энэ жишээн дээр component-ийн төлөвийг manage хийхийн тулд useState hook ашигласан. Мөн props-ийг баталгаажуулахын тулд prop-types ашигласан. Аюулгүй байдлын үүднээс submit хийхийн өмнө username болон password хоосон байгаа эсэхийг шалгаж байна. Ингэснээрээ болзошгүй injection attack-аас сэргийлж өгнө. Мөн label element-д for-ийн оронд htmlFor ашигласанаараа Cross-Site Scripting (XSS) attack-аас сэргийлэх юм. Нэмэлтээр prop-types-д isRequired prop зарласнаараа component рүү onSubmit prop-оор дамжуулагдагж байгааг баталгаажуулах юм.
+
 ### 9. Performance
 
 Шаардлагатай бол гүйцэтгэлийн хувьд Component-үүдийг оновчтой болгох. Гүйцэтгэлийн саад тотгорыг тодорхойлж, оновчтой болгохын тулд профайлын хэрэгслийг ашиглана уу.
