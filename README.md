@@ -28,7 +28,7 @@ function Holder(props) {
 
 ### 2. File Organization
 
-Файлуудыг логик бүлгүүд болон directories болгон зохион байгуул.
+Файлуудыг logical group болон directories болгон зохион байгуулаарай. Файлын зорилгыг тусгасан нэршлийг ашиглаарай.
 
 ```markdown
 - components/
@@ -45,29 +45,45 @@ function Holder(props) {
     - Details.js
 ```
 
-### 3. Documentation
+### 3. Code structure
 
-Component-үүдийн зорилго, хэрхэн ажилладаг, хэрхэн ашиглах талаар тайлбарласан comment бичиж өгнө үү.
+Унших, ойлгоход хялбар кодын бүтцийг ашигла. Уншиж чадварыг ойлгоход хялбар байхын тулд догол болон зайг ашиглана уу.
 
 ```jsx
-// This component renders a list of items
-// Props:
-// - items: An array of items to render
-// - onClick: A function to call when an item is clicked
-function ItemList({ items, onClick }) {
-  // We assume that each item is an object with a "text" property
-  // and a unique "id" property
+import React from "react";
+
+function ExampleComponent(props) {
+  const { data } = props;
+
+  function handleClick() {
+    console.log("Button clicked!");
+  }
+
   return (
-    <ul>
-      {items.map((item) => (
-        <li key={item.id} onClick={() => onClick(item)}>
-          {item.text}
-        </li>
-      ))}
-    </ul>
+    <div className="example-component">
+      <h1>{data.title}</h1>
+      <p>{data.description}</p>
+      <button onClick={handleClick}>Click Me</button>
+    </div>
   );
 }
+
+export default ExampleComponent;
 ```
+
+#### Энэ жишээнд:
+
+##### 1.We use consistent indentation of 2 spaces throughout the component.
+
+##### 1.We use consistent indentation of 2 spaces throughout the component.
+
+##### 1.We use consistent indentation of 2 spaces throughout the component.
+
+##### 1.We use consistent indentation of 2 spaces throughout the component.
+
+##### 1.We use consistent indentation of 2 spaces throughout the component.
+
+##### 1.We use consistent indentation of 2 spaces throughout the component.
 
 ### 4. Functionality
 
