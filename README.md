@@ -121,33 +121,13 @@ export default Button;
 
 ##### 6. Modular code structure-ийн дагуу Button component-д тусад нь file үүсгэсэн ба энэ нь дахин ашиглах болон өөрчлөхөд хялбар болгодог.
 
-### 5. Data Structures
+### 5. State management
 
-Component-үүдийн оролт, гаралтын хувьд тогтвортой өгөгдлийн бүтцийг ашиглах. Өгөгдлийн бүтцийг сайн тодорхойлсон бөгөөд ойлгомжтой болгох.
+State management нь application болон system-ийн төлөвийг удирдах, шинэчлэх үйл явцыг хэлнэ.State management нь component болон модулиудыг өөр хоорондоо харилцах, програмын төлөв байдлыг тогтмол харах боломжийг олгодог тул нарийн төвөгтэй програмуудыг бий болгох чухал үүрэгтэй. State management-ийн хэдэн арга байдаг. Үүнд:
 
-```jsx
-// Bad example:
-function Product({ product }) {
-  return (
-    <div>
-      <p>{product.title}</p>
-      <p>{product.price}</p>
-      <p>{product.description}</p>
-    </div>
-  );
-}
-
-// Good example:
-function Product({ title, price, description }) {
-  return (
-    <div>
-      <p>{title}</p>
-      <p>{price}</p>
-      <p>{description}</p>
-    </div>
-  );
-}
-```
+- Global variable зарлан component хооронд props-оор дамжуулах
+- State management-ийн сан ашиглах(Redux, MobX, or React Context API)
+  State management-ийн сан ашиглах нь төлөвийг өөр өөр component-аас шинэчлэх болон data source-ийг ашиглах зэрэг үйл явцыг хялбарчлахад тусална. Энэ нь төлөвийг удирдахад шаардагдах кодын хэмжээг багасгах, гүйцэтгэлийг сайжруулах, цаг хугацааны явцад програмыг debug хийх, засварлахад хялбар болгоход тусална.
 
 ### 6. Error Handling
 
